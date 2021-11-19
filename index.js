@@ -33,7 +33,7 @@ async function run() {
         const reviewCollection = database.collection("reviews");
        
       
-        // adding cars to database
+        // add cars to database
         app.post('/addCars', async (req, res) => {
             const newWatch = req.body;
             const result = await carsCollection.insertOne(newWatch);
