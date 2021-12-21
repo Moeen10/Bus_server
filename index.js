@@ -31,12 +31,20 @@ async function run() {
         const userCollection = database.collection("users");
         const ordersCollection = database.collection("orders");
         const reviewCollection = database.collection("reviews");
+        const lastUser = database.collection("monitor");
        
       
         // add cars to database
         app.post('/addCars', async (req, res) => {
             const newWatch = req.body;
             const result = await carsCollection.insertOne(newWatch);
+            res.send(result)
+
+        })
+
+        app.post('/monitor', async (req, res) => {
+            const details = req.body;
+            const result = await lastUser.insertOne(details);
             res.send(result)
 
         })
